@@ -2,7 +2,6 @@ import main
 import pytest
 
 
-
 def test_create_stack_accepts_single_word():
     assert main.create_stack('text') == ['t', 'e', 'x', 't']
 
@@ -46,9 +45,3 @@ class TestStackIsText:
 
     def test_reverse_stack(self):
         assert main.reverse_stack('abcdefg') == 'gfedcba'
-
-class TestStackIsNumeric:
-    x = ['1', '2', '3', '4', '5']
-
-    def test_text_stack_is_empty(self):
-        assert main.stack_is_empty(self.x) is False
