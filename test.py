@@ -12,6 +12,10 @@ def test_create_stack_accepts_integer():
 def test_peek_stack():
     assert main.peek_stack(['a','b','c']) == 'c'
 
+
+def test_reverse_individual_words():
+    assert ''.join(main.reverse_individual_words_in_stack('Hello World')) == 'olleH dlroW'
+
 class TestStackIsEmpty:
     x = []
 
