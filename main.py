@@ -33,3 +33,12 @@ def reverse_stack(input):
         new_word += pop_stack(stack)
     print(f'"{input}" was reversed to "{new_word}"')
     return new_word
+
+def reverse_stack_with_recursion(input, string):
+    """This needs to take the input as a stack already for the recursion to work."""
+    if not input:
+        print(string)
+        return(string)
+    else:
+        string += pop_stack(input)
+        reverse_stack_with_recursion(input, string)
