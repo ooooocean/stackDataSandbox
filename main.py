@@ -37,8 +37,9 @@ def reverse_stack(input):
 
 def reverse_stack_with_recursion(stack, string):
     """This needs to take the input as a stack already for the recursion to work."""
-    if stack:
+    if not stack:
+        print(string)
+        return(string)
+    else:
         string += pop_stack(stack)
         reverse_stack_with_recursion(stack, string)
-    else:
-        return string
