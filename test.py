@@ -2,7 +2,6 @@ import main
 import pytest
 
 
-
 def test_create_stack_accepts_single_word():
     assert main.create_stack('text') == ['t', 'e', 'x', 't']
 
