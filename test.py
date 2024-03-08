@@ -28,6 +28,10 @@ class TestStackIsEmpty:
         assert len(self.x) == 1
         assert self.x[0] == 'z'
 
+    def test_peek_empty_stack(self):
+        with pytest.raises(IndexError):
+            main.peek_stack(self.x)
+
 
 class TestStackIsText:
     x = ['t', 'e', 's', 't']
