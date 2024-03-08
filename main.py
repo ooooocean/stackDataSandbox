@@ -31,4 +31,5 @@ def reverse_stack(stack):
     new_word = ''
     while stack_is_empty(stack) is False:
         new_word += pop_stack(stack)
+    print(f'"{stack}" was reversed to "{new_word}"')
     return new_word
