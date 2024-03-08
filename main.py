@@ -7,7 +7,7 @@ def create_text_stack(stack):
     stack=[x for x in stack]
     return stack
 
-def stack_empty(stack):
+def stack_is_empty(stack):
     if stack == []:
         return True
     else:
