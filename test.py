@@ -34,15 +34,17 @@ class TestStackIsEmpty:
         with pytest.raises(IndexError):
             main.pop_stack(self.x)
 
+    def test_peek_empty_stack(self):
+        with pytest.raises(IndexError):
+            main.peek_stack(self.x)
+
     def test_push_empty_stack(self):
         item = 'z'
         main.push_stack(self.x, item)
         assert len(self.x) == 1
         assert self.x[0] == 'z'
 
-    def test_peek_empty_stack(self):
-        with pytest.raises(IndexError):
-            main.peek_stack(self.x)
+
 
 
 class TestStackIsText:
