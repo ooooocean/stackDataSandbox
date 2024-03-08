@@ -9,6 +9,8 @@ def test_create_stack_accepts_single_word():
 def test_create_stack_accepts_integer():
     assert main.create_stack(12345) == ['1', '2', '3', '4', '5']
 
+def test_peek_stack():
+    assert main.peek_stack(['a','b','c']) == 'c'
 
 class TestStackIsEmpty:
     x = []

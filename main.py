@@ -7,6 +7,8 @@ def create_stack(stack):
     stack = [x for x in str(stack)]
     return stack
 
+def peek_stack(stack):
+    return stack[len(stack)-1]
 
 def stack_is_empty(stack):
     if not stack:
@@ -74,5 +76,3 @@ def reverse_individual_words_in_stack(words):
         # once buffer_stack is empty, print the new stack
         else:
             return new_words
-
-print(reverse_individual_words_in_stack('Hello World'))
