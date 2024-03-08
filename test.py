@@ -5,8 +5,10 @@ import pytest
 def test_create_stack_accepts_single_word():
     assert main.create_stack('text') == ['t', 'e', 'x', 't']
 
+
 def test_create_stack_accepts_integer():
-    assert main.create_stack(12345) == ['1', '2', '3', '4','5']
+    assert main.create_stack(12345) == ['1', '2', '3', '4', '5']
+
 
 class TestStackIsEmpty:
     x = []
@@ -40,7 +42,6 @@ class TestStackIsText:
     def test_pop_text_stack(self):
         assert main.pop_stack(self.x) == 'z'
         assert len(self.x) == 4
-
 
     def test_reverse_stack(self):
         assert main.reverse_stack(self.x) == 'tset'
