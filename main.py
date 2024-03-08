@@ -17,7 +17,11 @@ def stack_is_empty(stack):
 
 def pop_stack(stack):
     if stack_is_empty(stack):
-        print('stack is empty.')
+        print('Stack is empty.')
     return stack.pop()
 
+
+def push_stack(stack, item):
+    stack.append(item)
+    print(f'Pushed item: {item}')
 
