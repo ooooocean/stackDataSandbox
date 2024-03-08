@@ -15,10 +15,13 @@ class TestStackIsEmpty:
 
     def test_pop_empty_stack(self):
         with pytest.raises(IndexError):
-            main.pop_stack(self.x, 'z')
+            main.pop_stack(self.x)
 
 
 class TestStackIsNotEmpty:
+    x = ['t', 'e', 's', 't']
     def test_non_empty_stack(self):
-        x = ['t', 'e', 's', 't']
-        assert main.stack_is_empty(x) is False
+        assert main.stack_is_empty(self.x) is False
+
+    def test_pop_non_empty_stack(self):
+        assert main.pop_stack(self.x) == 't'
