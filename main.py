@@ -26,10 +26,10 @@ def push_stack(stack, item):
     print(f'Pushed item: {item}')
 
 
-def reverse_stack(stack):
-    stack = create_stack(stack)
+def reverse_stack(input):
+    stack = create_stack(input)
     new_word = ''
     while stack_is_empty(stack) is False:
         new_word += pop_stack(stack)
-    print(f'"{stack}" was reversed to "{new_word}"')
+    print(f'"{input}" was reversed to "{new_word}"')
     return new_word
