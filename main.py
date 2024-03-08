@@ -4,14 +4,20 @@ Playing around with stack data structure, using it to reverse letters.
 
 
 def create_text_stack(stack):
-    stack=[x for x in stack]
+    stack = [x for x in stack]
     return stack
 
+
 def stack_is_empty(stack):
-    if stack == []:
+    if not stack:
         return True
     else:
         return False
 
-test = 'text'
-print(create_text_stack(test))
+
+def pop_stack(stack):
+    if stack_is_empty(stack):
+        print('stack is empty.')
+    return stack.pop()
+
+
