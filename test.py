@@ -3,7 +3,7 @@ import pytest
 
 
 def test_create_stack_accepts_single_word():
-    assert main.create_text_stack('text') == ['t', 'e', 'x', 't']  #
+    assert main.create_text_stack('text') == ['t', 'e', 'x', 't']
 
 
 class TestStackIsEmpty:
@@ -12,16 +12,30 @@ class TestStackIsEmpty:
     def test_empty_stack(self):
         assert main.stack_is_empty(self.x) is True
 
-
     def test_pop_empty_stack(self):
         with pytest.raises(IndexError):
             main.pop_stack(self.x)
 
+    def test_push_empty_stack(self):
+        item = 'z'
+        main.push_stack(self.x, item)
+        assert len(self.x) == 1
+        assert self.x[0] == 'z'
+
 
 class TestStackIsNotEmpty:
     x = ['t', 'e', 's', 't']
+    item = 'z'
+
     def test_non_empty_stack(self):
         assert main.stack_is_empty(self.x) is False
 
+    def test_push_non_empty_stack(self):
+        main.push_stack(self.x, self.item)
+        assert len(self.x) == 5
+        assert self.x[4] == 'z'
+
     def test_pop_non_empty_stack(self):
-        assert main.pop_stack(self.x) == 't'
+        assert main.pop_stack(self.x) == 'z'
+        assert len(self.x) == 4
+
