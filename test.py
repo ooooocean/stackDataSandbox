@@ -39,3 +39,7 @@ class TestStackIsNotEmpty:
         assert main.pop_stack(self.x) == 'z'
         assert len(self.x) == 4
 
+
+    def test_reverse_word(self):
+        assert main.reverse_word(self.x) == 'tset'
+

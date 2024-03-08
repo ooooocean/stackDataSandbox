@@ -25,3 +25,10 @@ def push_stack(stack, item):
     stack.append(item)
     print(f'Pushed item: {item}')
 
+
+def reverse_word(word):
+    stack = create_text_stack(word)
+    new_word = ''
+    while stack_is_empty(stack) is False:
+        new_word += pop_stack(stack)
+    return new_word
