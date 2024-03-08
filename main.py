@@ -3,8 +3,8 @@ Playing around with stack data structure, using it to reverse letters.
 """
 
 
-def create_text_stack(stack):
-    stack = [x for x in stack]
+def create_stack(stack):
+    stack = [x for x in str(stack)]
     return stack
 
 
@@ -26,8 +26,8 @@ def push_stack(stack, item):
     print(f'Pushed item: {item}')
 
 
-def reverse_word(word):
-    stack = create_text_stack(word)
+def reverse_stack(stack):
+    stack = create_stack(stack)
     new_word = ''
     while stack_is_empty(stack) is False:
         new_word += pop_stack(stack)
