@@ -47,7 +47,7 @@ class TestStackIsText:
         assert main.reverse_stack(self.x) == 'tset'
 
 class TestStackIsNumeric:
-    x = [1,2,3,4,5]
+    x = ['1', '2', '3', '4', '5']
 
     def test_text_stack_is_empty(self):
         assert main.stack_is_empty(self.x) is False
