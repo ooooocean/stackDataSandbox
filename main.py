@@ -8,6 +8,10 @@ def create_stack(stack):
     return stack
 
 
+def peek_stack(stack):
+    return stack[len(stack) - 1]
+
+
 def stack_is_empty(stack):
     if not stack:
         return True
@@ -39,7 +43,37 @@ def reverse_stack_with_recursion(stack, string):
     """This needs to take the input as a stack already for the recursion to work."""
     if not stack:
         print(string)
-        return(string)
+        return (string)
     else:
         string += pop_stack(stack)
         reverse_stack_with_recursion(stack, string)
+
+
+def reverse_individual_words_in_stack(words):
+    words_stack = create_stack(words)
+    new_words = []
+    buffer_stack = []
+    # iterate until the stack is empty
+    while words_stack:
+        # add letters to the new stack from our input
+        new_words.append(pop_stack(words_stack))
+        # when a space is found, pop the stack to a buffer for later
+        if not stack_is_empty(words_stack) and peek_stack(words_stack) == ' ':
+            # pop the space from the original stack to retain word order
+            # iterate through our new stack until it is empty
+            pop_stack(words_stack)
+            while new_words:
+                # move words to buffer
+                buffer_stack += pop_stack(new_words)
+                print(f'New words is {new_words}.\n'
+                      f'Buffer stack is {buffer_stack}')
+            # once input is empty, add a space to the top of the buffer stack to preserve spacing
+            else:
+                push_stack(buffer_stack, ' ')
+        # once words have all been iterated through, add words back in from the buffer
+        elif stack_is_empty(words_stack):
+            while buffer_stack:
+                new_words.append(pop_stack(buffer_stack))
+            # once buffer_stack is empty, print the new stack
+            else:
+                return new_words
