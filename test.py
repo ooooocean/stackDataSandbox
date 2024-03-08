@@ -15,7 +15,7 @@ def test_peek_stack():
 
 def test_reverse_individual_words():
     assert ''.join(main.reverse_individual_words_in_stack('Hello World')) == 'olleH dlroW'
-
+    assert ''.join(main.reverse_individual_words_in_stack('We love potatoes')) == 'eW evol seotatop'
 class TestStackIsEmpty:
     x = []
 
