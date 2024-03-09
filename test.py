@@ -65,3 +65,12 @@ class TestStackIsText:
 
     def test_reverse_stack(self):
         assert main.reverse_stack('abcdefg') == 'gfedcba'
+
+
+class TestStackIsInt:
+    y = [1, 2, 3, 4]
+
+    def test_push_stack_to_stack(self):
+        main.push_stack(self.y, [5, 6])
+        assert self.y == [1, 2, 3, 4, 5, 6]
+        assert len(self.y) == 6

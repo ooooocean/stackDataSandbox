@@ -26,9 +26,11 @@ def pop_stack(stack):
 
 
 def push_stack(stack, item):
-    stack.append(item)
-    print(f'Pushed item: {item}')
+    for _ in item:
+        stack.append(_)
+        print(f'Pushed item: {item}')
 
+push_stack([1,2,3,4],[5,6])
 
 def reverse_stack(input):
     stack = create_stack(input)
