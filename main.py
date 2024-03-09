@@ -39,14 +39,32 @@ def reverse_stack(input):
     return new_word
 
 
-def reverse_stack_with_recursion(stack, string):
-    """This needs to take the input as a stack already for the recursion to work."""
-    if not stack:
-        print(string)
-        return string
+# define a function that will be used to recurse and reverse an entire stack
+# this function will add an entry to the bottom of a stack
+def add_to_bottom_of_stack(stack, item):
+    # if the stack is not empty, then we want to pop the entries and add to a temporary
+    # stack until the original stack is empty
+    if not stack_is_empty(stack):
+        # save the first item on the stack and remove it
+        temp = pop_stack(stack)
+        # call the function again so that we iterate until the stack is empty
+        add_to_bottom_of_stack(stack, item)
+        push_stack(stack, temp)
+    # if the stack is empty, add the element
     else:
-        string += pop_stack(stack)
-        reverse_stack_with_recursion(stack, string)
+        push_stack(stack, item)
+
+
+def reverse_stack_with_recursion(stack):
+    """This needs to take the input as a stack already for the recursion to work."""
+    if stack_is_empty(stack):
+        return reversed
+    else:
+
+        temp_stack = stack
+        if stack_is_empty(temp_stack):
+            temp_stack
+        reverse_stack_with_recursion(stack)
 
 
 def reverse_individual_words_in_stack(words):
@@ -126,5 +144,5 @@ def stock_span_calculator(price):
     else:
         return reverse_stack_with_recursion(span,'')
 
-price =[100, 80, 60, 70, 60, 75, 85]
-print(stock_span_calculator(price))
+# price =[100, 80, 60, 70, 60, 75, 85]
+# print(stock_span_calculator(price))
