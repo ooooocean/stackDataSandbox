@@ -30,16 +30,15 @@ def push_stack(stack, item):
         stack.append(_)
         print(f'Pushed item: {item}')
 
-push_stack([1,2,3,4],[5,6])
 
-def reverse_stack(input):
-    stack = create_stack(input)
-    new_word = ''
-    while stack_is_empty(stack) is False:
-        new_word += pop_stack(stack)
-    print(f'"{input}" was reversed to "{new_word}"')
-    return new_word
-
+def reverse_stack(stack):
+    # take in stack as input.
+    # initialise output variable
+    # create a loop that continues until the original stack is empty
+    new_stack = []
+    while not stack_is_empty(stack):
+        new_stack.append(pop_stack(stack))
+    return new_stack
 
 # define a function that will be used to recurse and reverse an entire stack
 # this function will add an entry to the bottom of a stack

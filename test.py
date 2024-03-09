@@ -9,12 +9,14 @@ def test_create_stack_accepts_single_word():
 def test_create_stack_accepts_integer():
     assert main.create_stack(12345) == ['1', '2', '3', '4', '5']
 
+
 def test_peek_stack():
-    assert main.peek_stack(['a','b','c']) == 'c'
+    assert main.peek_stack(['a', 'b', 'c']) == 'c'
 
 
 def test_reverse_individual_1_words():
     assert ''.join(main.reverse_individual_words_in_stack('Test')) == 'tseT'
+
 
 def test_reverse_individual_2_words():
     assert ''.join(main.reverse_individual_words_in_stack('Hello World')) == 'olleH dlroW'
@@ -45,8 +47,6 @@ class TestStackIsEmpty:
         assert self.x[0] == 'z'
 
 
-
-
 class TestStackIsText:
     x = ['t', 'e', 's', 't']
     item = 'z'
@@ -63,8 +63,8 @@ class TestStackIsText:
         assert main.pop_stack(self.x) == 'z'
         assert len(self.x) == 4
 
-    def test_reverse_stack(self):
-        assert main.reverse_stack('abcdefg') == 'gfedcba'
+    def test_reverse_stack_text(self):
+        assert main.reverse_stack(self.x) == ['t', 's', 'e', 't']
 
 
 class TestStackIsInt:
@@ -74,3 +74,6 @@ class TestStackIsInt:
         main.push_stack(self.y, [5, 6])
         assert self.y == [1, 2, 3, 4, 5, 6]
         assert len(self.y) == 6
+
+    def test_reverse_stack_int(self):
+        assert main.reverse_stack(self.y) == [6, 5, 4, 3, 2, 1]
