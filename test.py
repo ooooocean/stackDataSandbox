@@ -14,6 +14,23 @@ def test_peek_stack():
     assert main.peek_stack(['a', 'b', 'c']) == 'c'
 
 
+def test_recursion_reverse_integer():
+    x = [1, 2, 3, 4]
+    main.reverse_stack_with_recursion(x)
+    assert x == [4, 3, 2, 1]
+
+
+def test_recursion_reverse_string():
+    x = ['a', 'b', 'c', 'd']
+    main.reverse_stack_with_recursion(x)
+    assert x == ['d', 'c', 'b', 'a']
+
+
+def test_recursion_reverse_empty():
+    x = []
+    main.reverse_stack_with_recursion(x)
+    assert x == []
+
 def test_reverse_individual_1_words():
     assert ''.join(main.reverse_individual_words_in_stack('Test')) == 'tseT'
 
@@ -30,6 +47,7 @@ def test_add_int_to_bottom_of_stack():
     x = [1, 2, 3, 4]
     main.add_to_bottom_of_stack(x, 0)
     assert x == [0, 1, 2, 3, 4]
+
 
 class TestStackIsEmpty:
     x = []

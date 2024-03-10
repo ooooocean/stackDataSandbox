@@ -63,12 +63,14 @@ def reverse_stack_with_recursion(stack):
     if not stack_is_empty(stack):
         # pop the input stack
         temp = pop_stack(stack)
-        # add the top element of the stack to the bottom of the temp stack
-        add_to_bottom_of_stack(temp, pop_stack(temp))
-        # recurse
-        reverse_stack_with_recursion()
-        # pop the input stack
+        # recurse, which will pop and store all values in memory
+        # with the bottom of the stack being most recent in memory
+        reverse_stack_with_recursion(stack)
+        # we now want to add each element to the bottom of the stack as we
+        # exit the recursion
+        add_to_bottom_of_stack(stack, temp)
     # once the stack is empty, return the reversed stack
+
 
 
 def reverse_individual_words_in_stack(words):
