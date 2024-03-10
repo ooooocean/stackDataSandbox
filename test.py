@@ -50,6 +50,10 @@ def test_add_int_to_bottom_of_stack():
     assert x == [0, 1, 2, 3, 4]
 
 
+def test_stock_span():
+    price = [10, 4, 5, 90, 120, 80]
+    assert main.stock_span_calculator(price) == [1, 1, 2, 4, 5, 1]
+
 class TestStackIsEmpty:
     x = []
 

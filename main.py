@@ -2,6 +2,7 @@
 Playing around with stack data structure, using it to reverse letters.
 """
 
+import copy
 
 def create_stack(stack):
     stack = [x for x in str(stack)]
@@ -69,8 +70,6 @@ def reverse_stack_with_recursion(stack):
         # we now want to add each element to the bottom of the stack as we
         # exit the recursion
         add_to_bottom_of_stack(stack, temp)
-    # once the stack is empty, return the reversed stack
-
 
 
 def reverse_individual_words_in_stack(words):
@@ -110,6 +109,15 @@ def reverse_individual_words_in_stack(words):
 # just before the given day, for which the price of the stock on the
 # current day is less than or equal to its price on the given day.
 
+# define a function that calculates the n day for a given day range, given the input
+# is the most recent day
+def calc_n_span(price_range, n_day_price):
+    n = 1
+    while not stack_is_empty(price_range) and n_day_price >= pop_stack(price_range):
+        n += 1
+    else:
+        return n
+
 
 def stock_span_calculator(price):
     # this function assumes input is already in stack format.
@@ -121,31 +129,12 @@ def stock_span_calculator(price):
     span = []
 
     # we want to iterate until the input stack is empty.
-    while price:
-        # initialise our nth element span variable
-        n_span = 1
-
-        # now, pop the price stack and assign it to a variable for comparison.
-        n_price = pop_stack(price)
-
-        # we also save the current value of the input stack so that we can call it back
-        # once comparisons are finished
-        n_stack = price
-
-        # if our nth day price is larger than the previous day's price,
-        # we increment our nth span by 1 and pop the stack
-        if not stack_is_empty(n_stack) and n_price >= peek_stack(n_stack):
-            # however, if the
-            n_span += 1
-            pop_stack(n_stack)
-        # if our nth day price is larger than the previous day's price,
-        # then write this span to our span stack and start again with the
-        # saved input stack
-        else:
-            push_stack(span, n_span)
-    # once we reach the end of our list, the span stack needs to be reversed
+    while len(price) != 1:
+        n_day = pop_stack(price)
+        temp_price = copy.deepcopy(price)
+        n_span = calc_n_span(temp_price, n_day)
+        add_to_bottom_of_stack(span, n_span)
     else:
-        return reverse_stack_with_recursion(span, '')
+        add_to_bottom_of_stack(span, 1)
+    return span
 
-# price =[100, 80, 60, 70, 60, 75, 85]
-# print(stock_span_calculator(price))
