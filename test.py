@@ -26,6 +26,11 @@ def test_reverse_individual_3_words():
     assert ''.join(main.reverse_individual_words_in_stack('We love potatoes')) == 'eW evol seotatop'
 
 
+def test_add_int_to_bottom_of_stack():
+    x = [1, 2, 3, 4]
+    main.add_to_bottom_of_stack(x, 0)
+    assert x == [0, 1, 2, 3, 4]
+
 class TestStackIsEmpty:
     x = []
 
@@ -71,9 +76,9 @@ class TestStackIsInt:
     y = [1, 2, 3, 4]
 
     def test_push_stack_to_stack(self):
-        main.push_stack(self.y, [5, 6])
-        assert self.y == [1, 2, 3, 4, 5, 6]
-        assert len(self.y) == 6
+        main.push_stack(self.y, 5)
+        assert self.y == [1, 2, 3, 4, 5]
+        assert len(self.y) == 5
 
     def test_reverse_stack_int(self):
-        assert main.reverse_stack(self.y) == [6, 5, 4, 3, 2, 1]
+        assert main.reverse_stack(self.y) == [5, 4, 3, 2, 1]
