@@ -54,6 +54,12 @@ def test_stock_span():
     price = [10, 4, 5, 90, 120, 80]
     assert main.stock_span_calculator(price) == [1, 1, 2, 4, 5, 1]
 
+
+def test_stock_span_single_item():
+    price = [10]
+    assert main.stock_span_calculator(price) == [1]
+
+
 class TestStackIsEmpty:
     x = []
 
