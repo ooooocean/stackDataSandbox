@@ -31,6 +31,7 @@ def test_recursion_reverse_empty():
     main.reverse_stack_with_recursion(x)
     assert x == []
 
+
 def test_reverse_individual_1_words():
     assert ''.join(main.reverse_individual_words_in_stack('Test')) == 'tseT'
 
