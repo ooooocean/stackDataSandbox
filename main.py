@@ -26,9 +26,7 @@ def pop_stack(stack):
 
 
 def push_stack(stack, item):
-    for _ in item:
-        stack.append(_)
-        print(f'Pushed item: {item}')
+    stack.append(item)
 
 
 def reverse_stack(stack):
@@ -40,16 +38,19 @@ def reverse_stack(stack):
         new_stack.append(pop_stack(stack))
     return new_stack
 
+
 # define a function that will be used to recurse and reverse an entire stack
 # this function will add an entry to the bottom of a stack
 def add_to_bottom_of_stack(stack, item):
     # if the stack is not empty, then we want to pop the entries and add to a temporary
     # stack until the original stack is empty
     if not stack_is_empty(stack):
-        # save the first item on the stack and remove it
+        # save the top item on the stack and remove it
         temp = pop_stack(stack)
         # call the function again so that we iterate until the stack is empty
         add_to_bottom_of_stack(stack, item)
+        # once we break out of the recursion to end the loop,
+        # elements will be adding back in, in reverse order
         push_stack(stack, temp)
     # if the stack is empty, add the element
     else:
@@ -58,14 +59,16 @@ def add_to_bottom_of_stack(stack, item):
 
 def reverse_stack_with_recursion(stack):
     """This needs to take the input as a stack already for the recursion to work."""
-    if stack_is_empty(stack):
-        return reversed
-    else:
-
-        temp_stack = stack
-        if stack_is_empty(temp_stack):
-            temp_stack
-        reverse_stack_with_recursion(stack)
+    # if the stack is not empty
+    if not stack_is_empty(stack):
+        # pop the input stack
+        temp = pop_stack(stack)
+        # add the top element of the stack to the bottom of the temp stack
+        add_to_bottom_of_stack(temp, pop_stack(temp))
+        # recurse
+        reverse_stack_with_recursion()
+        # pop the input stack
+    # once the stack is empty, return the reversed stack
 
 
 def reverse_individual_words_in_stack(words):
@@ -97,6 +100,7 @@ def reverse_individual_words_in_stack(words):
             else:
                 return new_words
 
+
 # The stock span problem is a financial problem where we have a series of
 # N daily price quotes for a stock and we need to calculate the span of the
 # stock’s price for all N days. The span Si of the stock’s price on a
@@ -110,10 +114,6 @@ def stock_span_calculator(price):
     # note: I initially tried to solve this with recursion, but realised that the
     # price we want to compare is needed, so I couldn't proceed with that method.
     # recursion methods only work if we don't care about the result of each subprocess.
-
-
-
-
 
     # initialise variable to contain the final result of the span
     span = []
@@ -143,7 +143,7 @@ def stock_span_calculator(price):
             push_stack(span, n_span)
     # once we reach the end of our list, the span stack needs to be reversed
     else:
-        return reverse_stack_with_recursion(span,'')
+        return reverse_stack_with_recursion(span, '')
 
 # price =[100, 80, 60, 70, 60, 75, 85]
 # print(stock_span_calculator(price))
