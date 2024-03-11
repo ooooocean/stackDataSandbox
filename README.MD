@@ -6,8 +6,15 @@ are listed on separate branches (for the most part!).
 I've also included some pytest scripts in order to practice using this tool.
 
 The following is present:
-1. Implementation of stack data structure in Python
-2. Reversing a stack
-3. Reversing a stack using recursion
-4. Reversing individual words in a sentence
-5. Finding the maximum difference between nearest left and right smaller elements using stack
+
+### Easy Problems
+- Implementation of stack data structure in Python 
+- Reversing a stack 
+- Reversing a stack using recursion (https://www.geeksforgeeks.org/reverse-a-stack-using-recursion/)
+- Reversing individual words in a sentence (https://www.geeksforgeeks.org/reverse-individual-words/)
+
+### Medium Problems
+- Finding the maximum difference between nearest left and right smaller elements using stack (https://www.geeksforgeeks.org/find-maximum-difference-between-nearest-left-and-right-smaller-elements/)
+
+### Hard Problems
+- The Celebrity Problem (https://www.geeksforgeeks.org/the-celebrity-problem/)
