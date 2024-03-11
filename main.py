@@ -6,7 +6,8 @@ import copy
 
 
 def create_stack(stack):
-    stack = [x for x in str(stack)]
+    """ Creates stack from a string """
+    stack = [list(str(stack))]
     return stack
 
 
@@ -207,3 +208,47 @@ def find_maximum_difference_between_nearest_left_and_right_elements(stack):
             max_diff = diff
     return max_diff
 
+
+'''In a party of N people, only one person is known to everyone. Such a person may be present at the party,
+if yes, (s)he doesn’t know anyone at the party. We can only ask questions like “does A know B? “. 
+Find the stranger (celebrity) in the minimum number of questions.
+
+We can describe the problem input as an array of numbers/characters representing persons in the party. 
+We also have a hypothetical function HaveAcquaintance(A, B) which returns true if A knows B, 
+and false otherwise. How can we solve the problem? '''
+
+
+# the celebrity is determined if every value in a slice is equal to 1, other than one.
+
+def find_celebrity(matrix):
+    matrix_length = len(matrix)
+    # define the slice that we want to compare against.
+    comparator = [0]
+    for i in range(matrix_length - 1):
+        comparator.append(1)
+
+    while matrix[0]:
+        # initialise slice for comparison
+        matrix_slice = []
+
+        # pop each stack and add to a slice
+        for i in range(matrix_length):
+            push_stack(matrix_slice, pop_stack(matrix[i]))
+
+        print(matrix_slice)
+        # after obtaining the list, sort the list and see if it is equivalent to 1, 1, 1, 0
+        if sorted(matrix_slice) == comparator:
+            # if a match is made, we want to make sure that the person does not know anybody
+            person = matrix[i-1]
+            celebrity_check = all(ele == 0 for ele in person)
+            # if the person knows no-one, then they are the celebrity
+            if not celebrity_check:
+                pass
+            else:
+                print(f'Person {i} is the celebrity')
+                return i
+        # otherwise, loop continues with the smaller people stacks
+    # if no match is found, then throw error
+    else:
+        print(f'Nobody is a celebrity.')
+        return None
