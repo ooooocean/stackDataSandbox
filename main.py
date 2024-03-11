@@ -4,6 +4,7 @@ Playing around with stack data structure, using it to reverse letters.
 
 import copy
 
+
 def create_stack(stack):
     stack = [x for x in str(stack)]
     return stack
@@ -137,4 +138,72 @@ def stock_span_calculator(price):
     else:
         add_to_bottom_of_stack(span, 1)
     return span
+
+
+def find_nearest_smallest_left_element(stack):
+    # if the input stack has length 1, then don't continue with the rest of the code
+    if len(stack) == 1:
+        return 0
+    # otherwise, continue with taking the top element of the stack
+    comparator = pop_stack(stack)
+    # we iterate a loop that is true as long as the next element is greater than
+    # the initial value
+    while comparator <= peek_stack(stack):
+        # if we reach the end of the stack and the stack is still larger, then we
+        # return 0 and break the loop
+        if len(stack) == 1:
+            return 0
+        else:
+            pop_stack(stack)
+    # once a smaller number is found, record the smallest element
+    else:
+        return peek_stack(stack)
+
+
+def find_nearest_smallest_left_element_array(stack):
+    # define array to be returned
+    result = []
+
+    # push results from defined function into array
+    while stack:
+        # duplicate stack for feeding into next function
+        temp_stack = copy.deepcopy(stack)
+        smallest = find_nearest_smallest_left_element(temp_stack)
+        pop_stack(stack)
+        push_stack(result, smallest)
+    # since values are calculated from the top of the stack to the bottom,
+    # we need to reverse the stack to obtain the correct values
+    return reverse_stack(result)
+
+
+def find_nearest_smallest_right_element_array(stack):
+    # reverse input stack
+    temp = reverse_stack(stack)
+
+    # call the left most array function
+    array = find_nearest_smallest_left_element_array(temp)
+
+    # reverse the result
+    return reverse_stack(array)
+
+
+def find_maximum_difference_between_nearest_left_and_right_elements(stack):
+    # create copy of array for input
+    stack_copy = copy.deepcopy(stack)
+
+    # create an array for nearest left elements
+    nearest_left_array = find_nearest_smallest_left_element_array(stack)
+    # create an array for nearest right elements
+    nearest_right_array = find_nearest_smallest_right_element_array(stack_copy)
+
+    # initialise variables to be used in loop
+    max_diff = 0
+
+    while nearest_left_array:
+        # find differences by popping the stacks
+        diff = abs(pop_stack(nearest_left_array) - pop_stack(nearest_right_array))
+        # save the largest value
+        if diff > max_diff:
+            max_diff = diff
+    return max_diff
 
