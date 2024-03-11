@@ -1,5 +1,5 @@
-import main
 import pytest
+import main
 
 
 def test_create_stack_accepts_single_word():
@@ -29,7 +29,7 @@ def test_recursion_reverse_string():
 def test_recursion_reverse_empty():
     x = []
     main.reverse_stack_with_recursion(x)
-    assert x == []
+    assert not x
 
 
 def test_reverse_individual_1_words():
@@ -71,7 +71,8 @@ def test_nearest_smallest_element():
 def test_nearest_smallest_left_element_array():
     assert main.find_nearest_smallest_left_element_array([1, 2, 8]) == [0, 1, 2]
     assert main.find_nearest_smallest_left_element_array([1]) == [0]
-    assert main.find_nearest_smallest_left_element_array([2, 4, 8, 7, 7, 9, 3]) == [0, 2, 4, 4, 4, 7, 2]
+    assert main.find_nearest_smallest_left_element_array(
+        [2, 4, 8, 7, 7, 9, 3]) == [0, 2, 4, 4, 4, 7, 2]
 
 
 def test_nearest_smallest_right_element_array():
@@ -79,16 +80,35 @@ def test_nearest_smallest_right_element_array():
     assert main.find_nearest_smallest_right_element_array([5, 2, 7]) == [2, 0, 0]
     assert main.find_nearest_smallest_right_element_array([1]) == [0]
     assert main.find_nearest_smallest_right_element_array([5, 4, 3]) == [4, 3, 0]
-    assert main.find_nearest_smallest_right_element_array([2, 4, 8, 7, 7, 9, 3]) == [0, 3, 7, 3, 3, 3, 0]
+    assert main.find_nearest_smallest_right_element_array(
+        [2, 4, 8, 7, 7, 9, 3]) == [0, 3, 7, 3, 3, 3, 0]
 
 
 def test_find_max_difference():
     assert main.find_maximum_difference_between_nearest_left_and_right_elements([2, 1, 8]) == 1
-    assert main.find_maximum_difference_between_nearest_left_and_right_elements([2, 4, 8, 7, 7, 9, 3]) == 4
-    assert main.find_maximum_difference_between_nearest_left_and_right_elements([5, 1, 9, 2, 5, 1, 7]) == 1
+    assert main.find_maximum_difference_between_nearest_left_and_right_elements(
+        [2, 4, 8, 7, 7, 9, 3]) == 4
+    assert main.find_maximum_difference_between_nearest_left_and_right_elements(
+        [5, 1, 9, 2, 5, 1, 7]) == 1
+
+def test_celebrity_problem_with_celebrity():
+    x = [[0, 0, 1, 0],
+          [0, 0, 1, 0],
+          [0, 0, 0, 0],
+          [0, 0, 1, 0]]
+    assert main.find_celebrity(x) == 3
+
+
+def test_celebrity_problem_without_celebrity():
+    y = [[0, 0, 1, 0],
+         [0, 0, 1, 0],
+         [0, 1, 0, 0],
+         [0, 0, 1, 0]]
+    assert main.find_celebrity(y) is None
 
 
 class TestStackIsEmpty:
+    """ Set of tests for testing empty stack"""
     x = []
 
     def test_empty_stack(self):
@@ -110,6 +130,7 @@ class TestStackIsEmpty:
 
 
 class TestStackIsText:
+    """ Set of tests for testing a stack which has only text elements"""
     x = ['t', 'e', 's', 't']
     item = 'z'
 
@@ -130,6 +151,7 @@ class TestStackIsText:
 
 
 class TestStackIsInt:
+    """ Set of tests for testing a stack which has only integer elements """
     y = [1, 2, 3, 4]
 
     def test_push_stack_to_stack(self):

@@ -6,32 +6,35 @@ import copy
 
 
 def create_stack(stack):
-    stack = [x for x in str(stack)]
+    """ Creates stack from a string """
+    stack = list(str(stack))
     return stack
 
 
 def peek_stack(stack):
+    """ Looks at element from the top of a stack """
     return stack[len(stack) - 1]
 
 
 def stack_is_empty(stack):
-    if not stack:
-        return True
-    else:
-        return False
+    """ Checks if a stack is empty"""
+    return not bool(stack)
 
 
 def pop_stack(stack):
+    """ Removes element from a stack """
     if stack_is_empty(stack):
         print('Stack is empty.')
     return stack.pop()
 
 
 def push_stack(stack, item):
+    """ Adds item to a stack """
     stack.append(item)
 
 
 def reverse_stack(stack):
+    """ Reverses order of items in a stack"""
     # take in stack as input.
     # initialise output variable
     # create a loop that continues until the original stack is empty
@@ -44,6 +47,7 @@ def reverse_stack(stack):
 # define a function that will be used to recurse and reverse an entire stack
 # this function will add an entry to the bottom of a stack
 def add_to_bottom_of_stack(stack, item):
+    """ Adds item to the bottom of a stack"""
     # if the stack is not empty, then we want to pop the entries and add to a temporary
     # stack until the original stack is empty
     if not stack_is_empty(stack):
@@ -74,6 +78,7 @@ def reverse_stack_with_recursion(stack):
 
 
 def reverse_individual_words_in_stack(words):
+    """ Reverses individual worlds in a string whilst maintaining word order """
     words_stack = create_stack(words)
     new_words = []
     buffer_stack = []
@@ -92,15 +97,13 @@ def reverse_individual_words_in_stack(words):
                 print(f'New words is {new_words}.\n'
                       f'Buffer stack is {buffer_stack}')
             # once input is empty, add a space to the top of the buffer stack to preserve spacing
-            else:
-                push_stack(buffer_stack, ' ')
+            push_stack(buffer_stack, ' ')
         # once words have all been iterated through, add words back in from the buffer
         elif stack_is_empty(words_stack):
             while buffer_stack:
                 new_words.append(pop_stack(buffer_stack))
             # once buffer_stack is empty, print the new stack
-            else:
-                return new_words
+            return new_words
 
 
 # The stock span problem is a financial problem where we have a series of
@@ -112,12 +115,12 @@ def reverse_individual_words_in_stack(words):
 
 # define a function that calculates the n day for a given day range, given the input
 # is the most recent day
-def calc_n_span(price_range, n_day_price):
+def calc_n_span(price_range, n_day_index):
+    """ Calculates the span of a given day in a given price range """
     n = 1
-    while not stack_is_empty(price_range) and n_day_price >= pop_stack(price_range):
+    while not stack_is_empty(price_range) and n_day_index >= pop_stack(price_range):
         n += 1
-    else:
-        return n
+    return n
 
 
 def stock_span_calculator(price):
@@ -135,8 +138,7 @@ def stock_span_calculator(price):
         temp_price = copy.deepcopy(price)
         n_span = calc_n_span(temp_price, n_day)
         add_to_bottom_of_stack(span, n_span)
-    else:
-        add_to_bottom_of_stack(span, 1)
+    add_to_bottom_of_stack(span, 1)
     return span
 
 
@@ -153,11 +155,9 @@ def find_nearest_smallest_left_element(stack):
         # return 0 and break the loop
         if len(stack) == 1:
             return 0
-        else:
-            pop_stack(stack)
+        pop_stack(stack)
     # once a smaller number is found, record the smallest element
-    else:
-        return peek_stack(stack)
+    return peek_stack(stack)
 
 
 def find_nearest_smallest_left_element_array(stack):
@@ -207,3 +207,36 @@ def find_maximum_difference_between_nearest_left_and_right_elements(stack):
             max_diff = diff
     return max_diff
 
+# the celebrity is determined if every value in a slice is equal to 1, other than one.
+
+def find_celebrity(matrix):
+    matrix_length = len(matrix)
+    # define the slice that we want to compare against.
+    comparator = [0]
+    for i in range(matrix_length - 1):
+        comparator.append(1)
+
+    while matrix[0]:
+        # initialise slice for comparison
+        matrix_slice = []
+
+        # pop each stack and add to a slice
+        for i in range(matrix_length):
+            push_stack(matrix_slice, pop_stack(matrix[i]))
+
+        print(matrix_slice)
+        # after obtaining the list, sort the list and see if it is equivalent to 1, 1, 1, 0
+        if sorted(matrix_slice) == comparator:
+            # if a match is made, we want to make sure that the person does not know anybody
+            person = matrix[i-1]
+            celebrity_check = all(ele == 0 for ele in person)
+            # if the person knows no-one, then they are the celebrity
+            if not celebrity_check:
+                pass
+            else:
+                print(f'Person {i} is the celebrity')
+                return i
+        # otherwise, loop continues with the smaller people stacks
+    # if no match is found, then throw error
+    print('Nobody is a celebrity.')
+    return None
