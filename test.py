@@ -1,5 +1,5 @@
-import main
 import pytest
+import main
 
 
 def test_create_stack_accepts_single_word():
@@ -29,7 +29,7 @@ def test_recursion_reverse_string():
 def test_recursion_reverse_empty():
     x = []
     main.reverse_stack_with_recursion(x)
-    assert x == []
+    assert not x
 
 
 def test_reverse_individual_1_words():
@@ -108,6 +108,7 @@ def test_celebrity_problem_without_celebrity():
 
 
 class TestStackIsEmpty:
+    """ Set of tests for testing empty stack"""
     x = []
 
     def test_empty_stack(self):
@@ -129,6 +130,7 @@ class TestStackIsEmpty:
 
 
 class TestStackIsText:
+    """ Set of tests for testing a stack which has only text elements"""
     x = ['t', 'e', 's', 't']
     item = 'z'
 
@@ -149,6 +151,7 @@ class TestStackIsText:
 
 
 class TestStackIsInt:
+    """ Set of tests for testing a stack which has only integer elements """
     y = [1, 2, 3, 4]
 
     def test_push_stack_to_stack(self):
