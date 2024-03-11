@@ -71,7 +71,8 @@ def test_nearest_smallest_element():
 def test_nearest_smallest_left_element_array():
     assert main.find_nearest_smallest_left_element_array([1, 2, 8]) == [0, 1, 2]
     assert main.find_nearest_smallest_left_element_array([1]) == [0]
-    assert main.find_nearest_smallest_left_element_array([2, 4, 8, 7, 7, 9, 3]) == [0, 2, 4, 4, 4, 7, 2]
+    assert main.find_nearest_smallest_left_element_array(
+        [2, 4, 8, 7, 7, 9, 3]) == [0, 2, 4, 4, 4, 7, 2]
 
 
 def test_nearest_smallest_right_element_array():
@@ -79,13 +80,16 @@ def test_nearest_smallest_right_element_array():
     assert main.find_nearest_smallest_right_element_array([5, 2, 7]) == [2, 0, 0]
     assert main.find_nearest_smallest_right_element_array([1]) == [0]
     assert main.find_nearest_smallest_right_element_array([5, 4, 3]) == [4, 3, 0]
-    assert main.find_nearest_smallest_right_element_array([2, 4, 8, 7, 7, 9, 3]) == [0, 3, 7, 3, 3, 3, 0]
+    assert main.find_nearest_smallest_right_element_array(
+        [2, 4, 8, 7, 7, 9, 3]) == [0, 3, 7, 3, 3, 3, 0]
 
 
 def test_find_max_difference():
     assert main.find_maximum_difference_between_nearest_left_and_right_elements([2, 1, 8]) == 1
-    assert main.find_maximum_difference_between_nearest_left_and_right_elements([2, 4, 8, 7, 7, 9, 3]) == 4
-    assert main.find_maximum_difference_between_nearest_left_and_right_elements([5, 1, 9, 2, 5, 1, 7]) == 1
+    assert main.find_maximum_difference_between_nearest_left_and_right_elements(
+        [2, 4, 8, 7, 7, 9, 3]) == 4
+    assert main.find_maximum_difference_between_nearest_left_and_right_elements(
+        [5, 1, 9, 2, 5, 1, 7]) == 1
 
 def test_celebrity_problem_with_celebrity():
     x = [[0, 0, 1, 0],
