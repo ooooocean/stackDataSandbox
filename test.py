@@ -1,6 +1,86 @@
 import pytest
 import main
 
+def test_class_stack():
+    x = main.Stack(size=3)
+    assert x.stack == [None, None, None]
+    assert x.top == -1
+
+    y = main.Stack(values=[1,2,3], size = 5)
+    assert y.stack == [1,2,3, None, None]
+    assert y.top == 2
+
+    z = main.Stack(values=[1,2,3], size = 3)
+    assert z.stack == [1,2,3]
+    assert z.top == 2
+
+
+def test_class_is_empty():
+    x = main.Stack(size=3)
+    assert x.is_empty() is True
+
+    y = main.Stack(values=[1,2,3], size=3)
+    assert y.is_empty() is False
+
+def test_class_is_full():
+    x = main.Stack(size=3)
+    assert x.is_full() is False
+
+    y = main.Stack(values=[1, 2, 3], size=3)
+    assert y.is_full() is True
+
+    z = main.Stack(values=[1,2,3], size = 5)
+    assert z.is_full() is False
+
+def test_class_pop_push():
+    x = main.Stack(size=3)
+    x.push(2)
+    assert x.stack == [2, None, None]
+    assert x.top == 0
+
+    x.push(3)
+    assert x.stack == [2,3,None]
+    assert x.top == 1
+
+    x.push(4)
+    assert x.stack == [2,3,4]
+    assert x.top == 2
+
+    assert x.push(5) is None
+
+    y = main.Stack(values=[1, 2, 3], size=3)
+    assert y.push(4) is None
+
+    z = main.Stack(values=[1,2,3], size = 5)
+    z.push(4)
+    z.push(5)
+    assert z.push(6) is None
+
+def test_class_pop():
+    x = main.Stack(size=3)
+    assert x.pop() is None
+    assert x.top == -1
+
+    y = main.Stack(values=[1, 2, 3], size=3)
+    assert y.pop() == 3
+    assert y.top == 1
+
+    assert y.pop() == 2
+    assert y.top == 0
+
+    assert y.pop() == 1
+    assert y.top == -1
+
+def test_class_peek():
+    x = main.Stack(size=3)
+    assert x.peek() is None
+
+    y = main.Stack(values=[1, 2, 3], size=3)
+    assert y.peek() == 3
+
+    y.pop()
+    assert y.peek() == 2
+
 
 def test_create_stack_accepts_single_word():
     assert main.create_stack('text') == ['t', 'e', 'x', 't']

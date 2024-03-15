@@ -4,6 +4,49 @@ Playing around with stack data structure, using it to reverse letters.
 
 import copy
 
+class Stack:
+    def __init__(self, size, values=None):
+        # write length of array to var
+
+        arr_len = len(values) if values else 0
+        self.size = size
+
+        if values:
+            if self.size < arr_len:
+                print('Size is smaller than input data, please input a larger size.')
+            self.stack = values
+            if self.size > arr_len:
+                for i in range(size - arr_len):
+                    i += 1
+                    self.stack.append(None)
+        else:
+            self.stack = [None] * self.size
+
+        self.top = arr_len - 1 if values else -1
+
+    def is_empty(self):
+        return True if self.top == -1 else False
+
+    def is_full(self):
+        return True if self.top + 1 == self.size else False
+
+    def push(self, item):
+        if self.is_full():
+            print('Stack is full.')
+            return
+        self.top += 1
+        self.stack[self.top] = item
+
+    def pop(self):
+        if self.is_empty():
+            print('Stack is empty.')
+            return
+        value = self.stack.pop()
+        self.top -= 1
+        return value
+
+    def peek(self):
+        return self.stack[self.top]
 
 def create_stack(stack):
     """ Creates stack from a string """
