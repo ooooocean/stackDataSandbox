@@ -2,8 +2,14 @@ import pytest
 import main
 
 def test_class_stack():
-    x = main.Stack([1,2,3])
-    assert x.stack == [1,2,3]
+    x = main.Stack(size=3)
+    assert x.stack == [None, None, None]
+    assert x.top == -1
+
+    y = main.Stack(values=[1,2,3], size = 5)
+    assert y.stack == [1,2,3, None, None]
+    assert y.top == 3
+
 
 
 def test_class_is_empty():
