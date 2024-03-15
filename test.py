@@ -10,12 +10,20 @@ def test_class_stack():
     assert y.stack == [1,2,3, None, None]
     assert y.top == 3
 
+    z = main.Stack(values=[1,2,3], size = 3)
+    assert z.stack == [1,2,3]
+    assert z.top == 3
 
 
 def test_class_is_empty():
-    x = main.Stack()
+    x = main.Stack(size=3)
     assert x.is_empty() is True
     assert x.top == -1
+
+    y = main.Stack(values=[1,2,3], size=3)
+    assert y.is_empty() is False
+
+
 
 def test_create_stack_accepts_single_word():
     assert main.create_stack('text') == ['t', 'e', 'x', 't']

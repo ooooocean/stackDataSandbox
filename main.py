@@ -25,7 +25,7 @@ class Stack:
         self.top = arr_len if values else -1
 
     def is_empty(self):
-        return True if len(self.stack) == 0 else False
+        return True if self.top == -1 else False
 
 
 
