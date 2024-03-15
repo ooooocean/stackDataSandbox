@@ -22,13 +22,21 @@ class Stack:
         else:
             self.stack = [None] * self.size
 
-        self.top = arr_len if values else -1
+        self.top = arr_len - 1 if values else -1
 
     def is_empty(self):
         return True if self.top == -1 else False
 
     def is_full(self):
-        return True if self.top == self.size else False
+        return True if self.top + 1 == self.size else False
+
+    def push(self, item):
+        if self.is_full():
+            print('Stack is full.')
+            return
+        self.top += 1
+        self.stack[self.top] = item
+
 
 
 
