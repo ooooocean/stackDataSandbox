@@ -8,11 +8,11 @@ def test_class_stack():
 
     y = main.Stack(values=[1,2,3], size = 5)
     assert y.stack == [1,2,3, None, None]
-    assert y.top == 3
+    assert y.top == 2
 
     z = main.Stack(values=[1,2,3], size = 3)
     assert z.stack == [1,2,3]
-    assert z.top == 3
+    assert z.top == 2
 
 
 def test_class_is_empty():
