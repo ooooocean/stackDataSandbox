@@ -37,6 +37,13 @@ class Stack:
         self.top += 1
         self.stack[self.top] = item
 
+    def pop(self):
+        if self.is_empty():
+            print('Stack is empty.')
+            return
+        value = self.stack.pop()
+        self.top -= 1
+        return value
 
 
 

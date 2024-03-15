@@ -32,7 +32,7 @@ def test_class_is_full():
     z = main.Stack(values=[1,2,3], size = 5)
     assert z.is_full() is False
 
-def test_class_push():
+def test_class_pop_push():
     x = main.Stack(size=3)
     x.push(2)
     assert x.stack == [2, None, None]
@@ -55,6 +55,23 @@ def test_class_push():
     z.push(4)
     z.push(5)
     assert z.push(6) is None
+
+def test_class_pop():
+    x = main.Stack(size=3)
+    assert x.pop() is None
+    assert x.top == -1
+
+    y = main.Stack(values=[1, 2, 3], size=3)
+    assert y.pop() == 3
+    assert y.top == 1
+
+    assert y.pop() == 2
+    assert y.top == 0
+
+    assert y.pop() == 1
+    assert y.top == -1
+
+
 
 def test_create_stack_accepts_single_word():
     assert main.create_stack('text') == ['t', 'e', 'x', 't']
