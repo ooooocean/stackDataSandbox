@@ -45,7 +45,8 @@ class Stack:
         self.top -= 1
         return value
 
-
+    def peek(self):
+        return self.stack[self.top]
 
 def create_stack(stack):
     """ Creates stack from a string """

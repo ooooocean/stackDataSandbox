@@ -71,6 +71,15 @@ def test_class_pop():
     assert y.pop() == 1
     assert y.top == -1
 
+def test_class_peek():
+    x = main.Stack(size=3)
+    assert x.peek() is None
+
+    y = main.Stack(values=[1, 2, 3], size=3)
+    assert y.peek() == 3
+
+    y.pop()
+    assert y.peek() == 2
 
 
 def test_create_stack_accepts_single_word():
