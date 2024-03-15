@@ -1,6 +1,10 @@
 import pytest
 import main
 
+def test_class_stack():
+    x = main.Stack([1,2,3])
+    assert x.stack == [1,2,3]
+
 
 def test_create_stack_accepts_single_word():
     assert main.create_stack('text') == ['t', 'e', 'x', 't']

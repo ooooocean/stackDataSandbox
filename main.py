@@ -4,6 +4,10 @@ Playing around with stack data structure, using it to reverse letters.
 
 import copy
 
+class Stack:
+    def __init__(self, values):
+        self.top = -1
+        self.stack = values
 
 def create_stack(stack):
     """ Creates stack from a string """
