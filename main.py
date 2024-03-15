@@ -5,10 +5,12 @@ Playing around with stack data structure, using it to reverse letters.
 import copy
 
 class Stack:
-    def __init__(self, values):
+    def __init__(self, values=None):
         self.top = -1
-        self.stack = values
+        self.stack = values if values else []
 
+    def is_empty(self):
+        return True if len(self.stack) == 0 else False
 def create_stack(stack):
     """ Creates stack from a string """
     stack = list(str(stack))

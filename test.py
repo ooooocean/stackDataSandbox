@@ -6,6 +6,11 @@ def test_class_stack():
     assert x.stack == [1,2,3]
 
 
+def test_class_is_empty():
+    x = main.Stack()
+    assert x.is_empty() is True
+    assert x.top == -1
+
 def test_create_stack_accepts_single_word():
     assert main.create_stack('text') == ['t', 'e', 'x', 't']
 
